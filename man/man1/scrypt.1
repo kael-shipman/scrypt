@@ -1,0 +1,77 @@
+.TH SCRYPT 1 "Version 0.1: Dec 1, 2012"
+.SH NAME
+scrypt \- a basic file/folder encryption program
+.SH SYNOPSIS
+.B "scrypt \-?"
+.br
+.B "scrypt \-\-help"
+.br
+.B "scrypt \-V"
+.br
+.B "scrypt \-\-version"
+.br
+.B "scrypt [-edp] [\fIbinary\fP] \fIpath\fP"
+
+.SH DESCRIPTION
+.I scrypt 
+is a very basic file and folder encryption program that uses
+openssl as a backend to perform des3 encryption on files.
+scrypt iterates through all files specified by
+.I path, 
+encrypting raw files and decrypting encrypted files.
+(It will add a .scrypt extension to encrypted files).
+If called with a --force-[x] argument, it will act accordingly,
+skipping files that are already in compliance. If called with
+a binary, it performs it's normal functions on the
+.I path 
+argument to the binary, then calls the original binary command
+as it was entered.
+
+.PP
+.I scrypt 
+can received piped input also, making it good for archival
+operations, too.
+
+.SH OPTIONS
+Command line options are described below.
+.PP
+Most options may be given in one of two forms: 
+either a dash followed by a single letter,
+or two dashes followed by a long option name.
+.PP
+.IP "\-?, \-h, \-\-help"
+Display this help text 
+(Depending on how your shell interprets the question mark,
+it may be necessary to quote the question mark, thus: "\-\e?".)
+.IP "\-e, \-\-force-encrypt"
+Encrypt all unencrypted files in the given path, ignoring files
+that are already encrypted.
+.IP "\-d, \-\-force-decrypt"
+Decrypt all encrypted files in the given path, ignoring files
+that are already raw.
+.IP "\-p, \-\-password"
+Explicitly specify a password (so the program can run without
+prompting a password).
+.IP "\-P, \-\-password-file=\fIpath\fP"
+read password from password file specified by 
+.I path.
+
+.SH "SEE ALSO"
+openssl(1)
+
+.SH COPYRIGHT
+Copyright (C) 2012 Kael Shipman
+.PP
+Distributed under the GNU General Public License
+
+.PP
+scrypt is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+.SH AUTHOR
+.PP
+Kael Shipman <kael.shipman@gmail.com>
+.br
+Send bug reports or comments to the above address.
